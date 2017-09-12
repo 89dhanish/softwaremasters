@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body  >
+<div ng-app="app" ng-init="webname='jumbaare'">
+<span ng-controller="ctrl1">
+{{firstName}}
+</span>
+<span ng-bind="webname"></span> 
+
+<div ng-controller="ctrl2">
+<input type="text" ng-model="firstname">
+{{ firstName + " ," + webname }}
+</div>
+
+<div ng-controller="ctrl3">
+{{ firstName + " ," + webname }}
+</div>
+
+
+<script>
+var app= angular.module("app", []);
+
+app.controller("ctrl1", function($scope,$timeout) {
+    $scope.firstName = "11";	
+	$timeout(function(){
+	$scope.firstName="22";
+	},3000);
+});
+
+app.controller("ctrl2", function($scope) {
+    $scope.firstName = "22";	
+	setTimeout(function(){
+	$scope.firstName="33";
+	$scope.$apply();
+	},3000);
+	$scope.$watch('firstname',function(newval,oldval){
+	console.log("old value: "+oldval+" and new value is: "+newval);
+	})
+});
+
+app.controller("ctrl3", function($scope) {
+    $scope.firstName = "33";	
+	setTimeout(function(){
+	$scope.firstName="44";
+	$scope.$apply();
+	},3000);
+	$scope.$watch().firstName=function(newval,oldval){
+	console.log("old value: "+oldval+" and new value is: "+newval);
+	}
+	
+});
+</script>
+
+</body>
+</html>

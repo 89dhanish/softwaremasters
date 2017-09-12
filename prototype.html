@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h1 id="dd"></h1>
+<script type="text/javascript">
+	function person(firstname,lastname){
+		this.firstname=firstname;
+		this.lastname=lastname;
+		return this;
+	}
+	function dummy(){}
+	dummy.prototype=new person('dhanish','goswami');
+	var r=new dummy();
+	console.log(r.firstname);
+	console.log(r.lastname); 
+     document.getElementById('dd').innerHTML=r.firstname;
+</script>
+</body>
+</html>

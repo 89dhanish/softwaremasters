@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script>
+	var app=angular.module('app',[]);
+	app.controller('ctrl',function($scope,$filter){
+		$scope.name='PREMA';
+		$scope.formattedname=$filter('lowercase')($scope.name);
+	});
+</script>
+</head>
+<body>
+<div ng-controller="ctrl">
+<input type="text" ng-model='name'>
+<h1>{{formattedname}}</h1>
+
+<div>
+</body>
+</html>
